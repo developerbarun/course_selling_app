@@ -9,7 +9,7 @@ userRouter.post("/signin", async (req,res) => {
     
 })
 
-userRouter.post("/purchase",auth, (req,res) => {
+userRouter.post("/purchase", (req,res) => {
     
 })
 
