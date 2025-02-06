@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-function auth (req,res,next){
+const userMiddleware = (req,res,next) => {
     try{
         const token = req.headers.authorization;
-        const decode = jwt.verify(token,process.env.JWT_SECRETS);
+        const decode = jwt.verify(token,process.env.USER_JWT_SECRETS);
         if(decode){
             req.userId = decode.userId;
             next();
         }else{
-            res.json({
+            res.status(403).json({
                 msg : "Wrong credits"
             })
         }
@@ -20,7 +20,6 @@ function auth (req,res,next){
     }
 }
 
-
 module.exports = {
-    auth
+    userMiddleware
 }
