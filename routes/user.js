@@ -1,7 +1,6 @@
 const { Router, application } = require("express");
 const { userModel } = require("../db");
 const jwt = require("jsonwebtoken");
-const { auth } = require("../middlewares/auth");
 const userRouter = Router();
 
 userRouter.post("/signup", async (req,res) => {
@@ -53,7 +52,7 @@ userRouter.post("/signin", async (req,res) => {
     }
 })
 
-userRouter.post("/purchase",auth, (req,res) => {
+userRouter.post("/purchase", (req,res) => {
     res.json({
         msg  : "/purchaae route"
     })
